@@ -1,0 +1,189 @@
+/* Styles pour la mise en page de base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    background-color: #fff;
+}
+h1 {
+	margin: 0;
+}
+#resultat {
+	margin: 20px;
+    height: 1000px;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* 1- positionning the 2 divs */
+.formulaire {
+	display: flex;
+}
+.formulaire > div {
+	flex: 1;
+	min-width: 0; /* fix for min-width: auto */
+}
+.formulaire > div + div {
+	margin-left: 1em;
+}
+
+/* 2- fluid inputs */
+div > p {
+	display: flex;
+}
+.formulaire input:not([type=submit]) {
+	flex: 1; /* fluid width */
+	min-width: 0; /* fix for min-width: auto */	
+	max-width: 15em;
+}
+
+textarea {
+	flex: 1; /* fluid height */
+	display: block; /* IE fix */
+}
+
+.formulaire > div {
+	padding: 1em;
+	margin: 4px;
+	background: #fff;
+	border: 1px solid gray;
+	border-radius: 4px;
+}
+input:focus {
+	outline: none;
+}
+label {
+	width: 15em;
+	margin-right: .5em;
+	text-align: right;
+}
+
+.formulaire .info {	
+	font-style: italic;	
+}
+.formulaire button {
+	flex: 1;
+	display: block;
+	min-width: 0;
+	width:80%;
+	appearance: none;
+	background-color: #2ea44f;
+	border: 1px solid rgba(27, 31, 35, .15);
+	border-radius: 6px;
+	box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+	padding: 6px 16px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.formulaire button:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.formulaire button:hover {
+  background-color: #2c974b;
+}
+
+.formulaire button:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.formulaire button:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.formulaire button:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.back {
+    margin: 0px;
+    padding: 10px;
+	background-color: #da68a0;
+}
+.back a {
+	color: white;
+    text-decoration: none;
+	font-weight: bold;
+}
+.back:hover {
+    background-color: #ed3572;
+}
+header {
+    background-color: #77c593;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.titre {
+	margin: 8px;
+	font-weight: bold;
+	color: #000;
+}
+
+nav {
+	width: 600px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+	display: block;
+}
+
+nav li {
+    margin: 10px;
+    padding: 0;
+	border-radius: 5px;
+	background-color: #da68a0;
+}
+
+nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+	border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #ed3572;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #77c593;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed; /* Ajoutez cette ligne */
+    bottom: 0; /* Le footer sera positionné en bas de la fenêtre */
+    width: 100%; /* Le footer occupera toute la largeur de la fenêtre */
+}

@@ -1,0 +1,82 @@
+<HTML>
+	<HEAD>
+		<meta charset="UTF-8">
+		<script src="jspdf.umd.min.js"></script>
+		<script src="pdfobject.min.js"></script>
+	</HEAD>
+	<BODY>
+		<div id="saisie" style="margin: 10px;">
+			Table la plus petite : <INPUT type="number" id="min" min="0" value="4" />
+			Table la plus grande : <INPUT type="number" id="max" min="0" value="5" />
+			Nombre de pages : <INPUT type="number" id="nbPages" min="1" value="1" />
+			<button id="go" onclick="generate()">Générer</button>
+		</div>
+		<div id="resultat"></div>
+		<script>
+			function generate() {
+				//http://raw.githack.com/MrRio/jsPDF/master/			
+				var min = Number(document.getElementById("min").value);
+				var max = Number(document.getElementById("max").value);
+				
+				var nbPages = Number(document.getElementById("nbPages").value);
+				const { jsPDF } = window.jspdf;
+				// Dessin de la page
+				var doc = new jsPDF("portrait");
+				
+				// Préparation des combinaisons
+				var operations = [];
+				var bornemin = 1;
+				var bornemax = 10;
+				
+				for (var i = min; i <= max; i += 1) {
+					for (var j = bornemin; j < bornemax; j += 1) {
+						if (getRandomInt(2) > 0) {
+							operations.push(i.toString()+' + '+j.toString()+' = ');
+						} else {
+							operations.push(j.toString()+' + '+i.toString()+' = ');
+						}
+					}
+				}			
+				
+				// Finalisation
+				for (var page = 1; page < nbPages + 1; page += 1) {
+					if (page > 1) {
+						doc.addPage();
+					}
+					shuffleArray(operations);
+					doc.setFontSize(10);
+					doc.setTextColor(255,0,0);
+					doc.text("Tables de "+min.toString()+" à "+max.toString(), 170, 15);
+					doc.setFontSize(15);
+					doc.setTextColor(0,0,0);
+					doc.text("Exercice : résoudre les 20 opérations ci-dessous.", 10, 20);
+					doc.line(10, 22, 170, 22);
+					doc.setFontSize(18);
+					for (var i = 0; i < 20; i += 1) {
+						var abs = i % 2 === 0 ? 10 : 120; 
+						var ord = i % 2 === 0 ? i*10+40 : (i-1)*10+40;
+						if (i < operations.length) {
+							doc.text(operations[i], abs, ord);
+						} else {
+							doc.text(operations[getRandomInt(operations.length)], abs, ord);
+						}
+					}
+				}
+				
+				PDFObject.embed(doc.output('datauristring'), "#resultat");
+			}
+			
+			function getRandomInt(max) {
+			  return Math.floor(Math.random() * max);
+			}
+			function shuffleArray(array) {
+			  for (let i = array.length - 1; i > 0; i--) {
+				const j = Math.floor(Math.random() * (i + 1));
+				const temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			  }
+			}
+		</script>
+	</BODY>
+</HTML>
