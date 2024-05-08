@@ -1,0 +1,51 @@
+<HTML>
+	<HEAD>
+	<style>
+		button {
+			width:100px; background-color:#ffea28; cursor: pointer;
+		}
+		button:hover {
+			background-color: gold;
+		}
+	</style>
+	<HEAD>
+	<BODY>
+		<div style="background-color: #f8f9f9; border-color: black; border-width: 1px; border-style: solid;">
+			<div style="padding: 30px; display: flex;">
+				<div style="padding: 30px;">
+					<div>A mettre</div>
+					<input id="total" type="text" value="2000"></input>
+				</div>
+				<div style="padding: 30px;">
+					<div>Salaire J</div>
+					<input id="j" type="text"></input>
+				</div>
+				<div style="padding: 30px;">
+					<div>Salaire E</div>
+					<input id="e" type="text"></input>
+				</div>
+				<button onclick="updateComptes()">CALCUL</button>
+			</div>
+			<div style="padding: 30px">
+				<div style="padding: 10px">
+					<b>Versement J</b> : <span id="vj">?</span> &euro;
+				</div>
+				<div style="padding: 10px">
+					<b>Versement E</b> : <span id="ve">?</span> &euro;
+				</div>
+			</div>
+		</div>
+		<script>
+			function updateComptes() {
+			  var se = parseInt(document.getElementById("e").value);
+			  var sj = parseInt(document.getElementById("j").value);
+			  sj = sj - 2662;
+			  var total = parseInt(document.getElementById("total").value);
+			  var ve = (se * total)/(se+sj);
+			  var vj = total - ve;
+			  document.getElementById("vj").innerHTML = Math.round(vj);
+			  document.getElementById("ve").innerHTML = Math.round(ve);
+			}
+		</script>
+	</BODY>
+</HTML>
