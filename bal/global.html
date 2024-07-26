@@ -21,13 +21,13 @@
 			let personnes = JSON.parse(listeRecupereeString);
 
 			var index = 0;
-			var hauteur = 26;
-			var largeur = 97;
+			var hauteur = 26; // 26mm
+			var largeur = 102; // 97mm
 			var marge = 20;
 			var numWidth = 15;
 			var position = 0;
 			for (const bal of personnes) {
-				if (index>0 && index%10 === 0 ) {
+				if (index>0 && index%9 === 0 ) {
 					doc.addPage();
 					position = 0;
 				}
