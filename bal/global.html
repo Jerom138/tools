@@ -91,11 +91,13 @@
 					doc.setTextColor(255,0,0);
 					doc.setFont('helvetica', 'bold');
 					doc.setFontSize(12);
-					doc.text('STOP', marge+82, hauteur*position+marge+18);
-					doc.text('PUB', marge+83, hauteur*position+marge+23);
+					var posx = 83;
+					var posy = 10;
+					doc.text('STOP', marge+posx+2, hauteur*position+marge+posy+5.5);
+					doc.text('PUB', marge+posx+3, hauteur*position+marge+posy+9.5);
 					doc.setDrawColor('#FF0000');
 					doc.setLineWidth(0.6);
-					doc.rect(marge+80, hauteur*position+marge+12.5, 15, 12.5, 'D');
+					doc.rect(marge+posx, hauteur*position+marge+posy, 15, 12.5, 'D');
 				}
 				index++;
 				position++;
