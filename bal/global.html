@@ -34,7 +34,8 @@
 				var i = 0;
 				for (const p of data.values) {
 					if (i > 0) {
-						pers.push({numero: p[0], ligne1: p[1], ligne2: p[2], ligne3: p[3], stopPub: p[4]!==undefined});
+						// pers.push({numero: p[0], ligne1: p[1], ligne2: p[2], ligne3: p[3], stopPub: p[4]!==undefined});
+						pers.push({numero: p[0], ligne1: p[1], ligne2: p[2], ligne3: p[3], stopPub: false});
 					}
 					i++;
 				}

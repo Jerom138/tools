@@ -9,7 +9,7 @@ function generatePdf() {
 	var hauteur = 26; // 26mm
 	var largeur = 102; // 97mm
 	var marge = 20;
-	var numWidth = 15;
+	var numWidth = 18;
 	var position = 0;
 	for (const bal of personnes) {
 		if (index>0 && index%10 === 0 ) {
@@ -28,7 +28,7 @@ function generatePdf() {
 		doc.setFont('helvetica', 'bold');
 		doc.setTextColor(0,0,0);
 		doc.setFontSize(16);
-		doc.text(bal.numero, marge+2.5, hauteur*position+marge+15);
+		doc.text(bal.numero, marge+numWidth/2, hauteur*position+marge+hauteur/2, { align: 'center', baseline: 'middle' });
 		
 		// Nom
 		var decalageHauteur = 15;
@@ -39,18 +39,18 @@ function generatePdf() {
 				decalageHauteur = 11.5;
 			}
 		}
-		doc.setFont('helvetica', 'normal')
+		doc.setFont('helvetica', 'bold')
 		doc.setFontSize(getFontSizeForLigne(bal.ligne1, bal.stopPub));
-		doc.text(bal.ligne1, marge+18, hauteur*position+marge+decalageHauteur);
+		doc.text(bal.ligne1, marge+20, hauteur*position+marge+decalageHauteur);
 		if (!isNullOrEmpty(bal.ligne2)) {
 			doc.setFontSize(getFontSizeForLigne(bal.ligne2, bal.stopPub));
 			decalageHauteur+=8;
-			doc.text(bal.ligne2, marge+18, hauteur*position+marge+decalageHauteur);
+			doc.text(bal.ligne2, marge+20, hauteur*position+marge+decalageHauteur);
 		}
 		if (!isNullOrEmpty(bal.ligne3)) {
 			doc.setFontSize(getFontSizeForLigne(bal.ligne3, bal.stopPub));
 			decalageHauteur+=8;
-			doc.text(bal.ligne3, marge+18, hauteur*position+marge+decalageHauteur);
+			doc.text(bal.ligne3, marge+20, hauteur*position+marge+decalageHauteur);
 		}
 		
 		// Stop pub
@@ -80,11 +80,12 @@ function generatePdf() {
 }
 
 function getFontSizeForLigne(texte, stopPub) {
+	return 15;
 	if (texte.length > 18 && stopPub) {
-		return 15;
+		return 16;
 	}
 	if (texte.length > 23) {
-		return 13;
+		return 16;
 		if (texte.length > 28) {
 			return 12;
 		}
